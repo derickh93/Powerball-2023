@@ -1,0 +1,43 @@
+body {
+    font-family: 'Poppins', sans-serif;
+}
+h1{
+    margin: 0;
+}
+button{
+    background-color: white;
+    border:thin solid green;
+    padding-block: 10px;
+    padding-inline: 20px;
+    border-radius: 5px;
+    color: green;
+    font-weight: bold;
+    box-shadow: 0 2px 4px rgba(0,0,0,.15);
+}
+
+button:active {
+    background: rgb(177, 219, 177);
+}
+
+@media not (hover: none) {
+    button:hover, button:active {
+        background: rgb(177, 219, 177);
+    }  
+}
+
+svg {
+    filter: drop-shadow(0 4px 8px rgba(0,0,0,.15));
+}
+
+.my-balls{
+    display: flex;
+    gap: 2px;
+}
+
+.my-balls svg:last-child circle {
+    fill: url(#red-ball-gradient);
+}
+
+.my-balls svg:last-child text {
+    fill: url(#white-text-gradient);
+}

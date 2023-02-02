@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scripts.js" type="module"></script>
+    <title>T2S Purge</title>
+  </head>
+  <body>
+    <h1>T2S Purge</h1>
+    <button id="generate">Generate</button>
+    <div id="ball-storage"></div>
+    <template>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
+            <defs>
+                <!-- white ball -->
+                <linearGradient id="text-gradient" gradientTransform="rotate(120)">
+                    <stop offset="0" stop-color="#555" />
+                    <stop offset="1" stop-color="#111" />
+                </linearGradient>
+                <radialGradient id="ball-gradient" cx="0.55" cy="0.4">
+                    <stop offset="0" stop-color="white"/>
+                    <stop offset="0.2" stop-color="white"/>
+                    <stop offset="0.8" stop-color="#ddd"/>
+                    <stop offset="1" stop-color="#ccc"/>
+                </radialGradient>
+
+                <!-- red ball -->
+                <linearGradient id="white-text-gradient" gradientTransform="rotate(120)">
+                    <stop offset="0" stop-color="#fff" />
+                    <stop offset="1" stop-color="#aaa" />
+                </linearGradient>
+                <radialGradient id="red-ball-gradient" cx="0.55" cy="0.4">
+                    <stop offset="0" stop-color="hsl(355, 80%, 80%)"/>
+                    <stop offset="0.2" stop-color="hsl(355, 80%, 80%)"/>
+                    <stop offset="0.8" stop-color="hsl(345, 60%, 50%)"/>
+                    <stop offset="1" stop-color="hsl(350, 50%, 50%)"/>
+                </radialGradient>
+            </defs>
+            <circle r="9" fill="url(#ball-gradient)" />
+            <text text-anchor="middle" alignment-baseline="central" fill="url(#text-gradient)"
+                font-size="10" font-weight="bold">1</text>
+        </svg>
+    </template>
+  </body>
+</html>
