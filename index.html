@@ -16,39 +16,14 @@
   </head>
   <body>
     <h1>T2S Purge</h1>
-    <button id="generate">Generate</button>
-    <div id="ball-storage"></div>
-    <template>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="-10 -10 20 20">
-            <defs>
-                <!-- white ball -->
-                <linearGradient id="text-gradient" gradientTransform="rotate(120)">
-                    <stop offset="0" stop-color="#555" />
-                    <stop offset="1" stop-color="#111" />
-                </linearGradient>
-                <radialGradient id="ball-gradient" cx="0.55" cy="0.4">
-                    <stop offset="0" stop-color="white"/>
-                    <stop offset="0.2" stop-color="white"/>
-                    <stop offset="0.8" stop-color="#ddd"/>
-                    <stop offset="1" stop-color="#ccc"/>
-                </radialGradient>
+    <div id="ball-storage">
+    </div>
+    <div class="actions">
 
-                <!-- red ball -->
-                <linearGradient id="white-text-gradient" gradientTransform="rotate(120)">
-                    <stop offset="0" stop-color="#fff" />
-                    <stop offset="1" stop-color="#aaa" />
-                </linearGradient>
-                <radialGradient id="red-ball-gradient" cx="0.55" cy="0.4">
-                    <stop offset="0" stop-color="hsl(355, 80%, 80%)"/>
-                    <stop offset="0.2" stop-color="hsl(355, 80%, 80%)"/>
-                    <stop offset="0.8" stop-color="hsl(345, 60%, 50%)"/>
-                    <stop offset="1" stop-color="hsl(350, 50%, 50%)"/>
-                </radialGradient>
-            </defs>
-            <circle r="9" fill="url(#ball-gradient)" />
-            <text text-anchor="middle" alignment-baseline="central" fill="url(#text-gradient)"
-                font-size="10" font-weight="bold">1</text>
-        </svg>
-    </template>
+      <button id="history">History</button>
+      <button id="generate">Generate</button>
+      <button id="current">Current</button>
+
+    </div>
   </body>
 </html>

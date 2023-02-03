@@ -1,17 +1,19 @@
+import { PowerballSet } from "./powerball-set.js";
+
 /**
  * @type {HTMLButtonElement}
  */
 const button = /**@type {any}*/ (document.querySelector("#generate"));
-button.addEventListener("click", printButtonText);
+button.addEventListener("click", () => {
+
+});
 
 /**
  * @type {HTMLDivElement}
  */
 let ballStorage = /**@type {any}*/ (document.querySelector("#ball-storage"));
 
-function printButtonText() {
-    ballStorage.replaceChildren(renderMyBalls(numberSet()))
-}
+
 
 /**
  *
@@ -35,37 +37,58 @@ function numberSet() {
 }
 
 /**
- *
- * @param {number} number
- * @returns {SVGSVGElement}
+ * @type {HTMLButtonElement}
  */
-function renderMyBall(number) {
-  /**
-   * @type {HTMLTemplateElement}
-   */
-  const template = /**@type {any}*/ (document.querySelector("template"));
-  /**
-   * @type {SVGSVGElement}
-   */
-  let ball = /**@type {any}*/ (template.content.querySelector("svg")).cloneNode(
-    true
-  );
-  /**@type {SVGTextElement}*/ (ball.querySelector("text")).textContent =
-    String(number);
+const winningButton = /**@type {any} */(document.querySelector('#current'));
+winningButton.addEventListener('click', async () => {
+  const data = await getData()
+  for (const idk of data) {
+    printWinningNumbers(idk.winning_numbers)
+  }
 
-  return ball;
+});
+/** 
+ * @param {Array<string>} historyNumberSet
+*/
+function printWinningNumbers(historyNumberSet) {
+  const powerball = new PowerballSet();
+  powerball.numbers = historyNumberSet;
+  ballStorage.append(powerball)
 }
+
+
+/**
+ * @typedef {{
+ *  draw_date: string
+ *  multiplier: number
+ *  winning_numbers: string
+ * }} PowerballHistoryAPI
+ */
+
+/**
+ * @typedef {{
+ *  draw_date: Date;
+ *  multiplier: number;
+ *  winning_numbers: Array<string>;
+ * }} PowerballHistory
+ */
 
 /**
  *
- * @param {Iterable<number>} numbers
- * @returns
  */
-function renderMyBalls(numbers) {
-  let ballDiv = document.createElement("div");
-  ballDiv.classList.add("my-balls");
-  for (const number of numbers) {
-    ballDiv.append(renderMyBall(number));
-  }
-  return ballDiv;
+async function getData() {
+  const url = new URL('https://data.ny.gov/resource/dhwa-m6y4.json');
+  url.searchParams.set('$limit','5');
+
+  const request = await fetch(url);
+  /**
+   * @type {Array<PowerballHistoryAPI>}
+   */
+  const response = await request.json();
+  
+  return response.map(data => ({
+    ...data,
+    draw_date: new Date(data.draw_date),
+    winning_numbers: data.winning_numbers.split(' ')
+  }))
 }

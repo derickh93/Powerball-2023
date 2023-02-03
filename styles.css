@@ -1,8 +1,11 @@
 body {
     font-family: 'Poppins', sans-serif;
+    height: 100%;
+    width: 100%;
 }
 h1{
     margin: 0;
+    text-align: center;
 }
 button{
     background-color: white;
@@ -25,19 +28,24 @@ button:active {
     }  
 }
 
-svg {
-    filter: drop-shadow(0 4px 8px rgba(0,0,0,.15));
-}
 
-.my-balls{
+html {
+    margin: 0px;
+ }
+ 
+ body {
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+    margin: 0px;
+    min-height: 100vh;
+    min-width: 100vw;
+ }
+
+
+ .actions {
+    width: 100%;
     display: flex;
-    gap: 2px;
-}
-
-.my-balls svg:last-child circle {
-    fill: url(#red-ball-gradient);
-}
-
-.my-balls svg:last-child text {
-    fill: url(#white-text-gradient);
-}
+    justify-content: center;
+    gap: 12px;
+    padding-block: 24px;
+ }
